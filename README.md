@@ -17,3 +17,6 @@ Later on the application will be extended to allow for easy browsing of the capt
 
     php bin/console fos:user:create alarm-user
     php bin/console fos:user:promote alarm-user ROLE_ALARM
+
+## Usage
+Simply send a file with the name `alarm[file]` to `/upload`. Authenticate with basic auth.
