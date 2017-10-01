@@ -8,7 +8,5 @@ parameters:
     mailer_password: ~
     mailer_from: ~
 
-    upload_directory: /var/lib/alarm/uploads
-
     # A secret key that's used to generate certain security-related tokens
     secret: ThisTokenIsNotSoSecretChangeIt
