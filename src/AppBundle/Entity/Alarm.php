@@ -30,6 +30,12 @@ class Alarm
     protected $file;
 
     /**
+     * @var string
+     * @ORM\Column(type="string")
+     */
+    protected $fileName;
+
+    /**
      * @var \DateTime
      */
     protected $createdAt;
@@ -78,6 +84,22 @@ class Alarm
     public function setFile($file)
     {
         $this->file = $file;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFileName()
+    {
+        return $this->fileName;
+    }
+
+    /**
+     * @param string $fileName
+     */
+    public function setFileName($fileName)
+    {
+        $this->fileName = $fileName;
     }
 
     /**

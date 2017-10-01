@@ -35,9 +35,10 @@ class AlarmController extends Controller
             );
 
             $alarm->setFile($this->getParameter('upload_directory') . '/' . $fileName);
+            $alarm->setFileName($file->getClientOriginalName());
+            $alarm->setCreatedBy($this->getUser()->getUsername());
 
             $em = $this->getDoctrine()->getManager();
-            $alarm->setCreatedBy($this->getUser()->getUsername());
             $em->persist($alarm);
             $em->flush();
 
