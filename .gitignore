@@ -16,9 +16,9 @@
 !var/data
 !var/data/.gitkeep
 /var/data/data.sqlite
+/var/uploads/*
 !var/uploads
 !var/uploads/.gitkeep
-/var/uploads/*
 /vendor/
 /web/bundles/
 /.idea/
