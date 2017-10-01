@@ -37,24 +37,22 @@ class AlarmController extends Controller
             $alarm->setFile($this->getParameter('upload_directory') . '/' . $fileName);
 
             $em = $this->getDoctrine()->getManager();
-            $alarm->setCreatedBy('no user system yet'); // TODO
+            $alarm->setCreatedBy($this->getUser()->getUsername());
             $em->persist($alarm);
             $em->flush();
 
-            if ($this->getParameter('mailer_to')) {
-                $message = (new \Swift_Message('Alarm'))
-                    ->setFrom($this->getParameter('mailer_from'))
-                    ->setTo($this->getParameter('mailer_to'))
-                    ->setBody(
-                        $this->renderView(
-                        'alarm/email.txt.twig',
-                            ['alarm' => $alarm]
-                        ),
-                        'text/plain'
-                    );
+            $message = (new \Swift_Message('Alarm'))
+                ->setFrom($this->getParameter('mailer_from'))
+                ->setTo($this->getUser()->getEmail())
+                ->setBody(
+                    $this->renderView(
+                    'alarm/email.txt.twig',
+                        ['alarm' => $alarm]
+                    ),
+                    'text/plain'
+                );
 
-                $mailer->send($message);
-            }
+            $mailer->send($message);
         }
 
         return $this->render('alarm/upload.html.twig', [

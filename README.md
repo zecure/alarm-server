@@ -14,3 +14,6 @@ Later on the application will be extended to allow for easy browsing of the capt
     composer install
     php bin/console doctrine:database:create 
     php bin/console doctrine:schema:update --force 
+
+    php bin/console fos:user:create alarm-user
+    php bin/console fos:user:promote alarm-user ROLE_ALARM
