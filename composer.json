@@ -1,6 +1,13 @@
 {
-    "name": "dev/alarm_server",
-    "license": "proprietary",
+    "name": "zecure/alarm-server",
+    "license": "GPL-3.0",
+    "authors": [
+        {
+            "name": "Hendrik Buchwald",
+            "email": "hb@zecure.org",
+            "homepage": "https://zecure.org"
+        }
+    ],
     "type": "project",
     "autoload": {
         "psr-4": {
