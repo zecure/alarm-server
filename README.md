@@ -20,3 +20,7 @@ Later on the application will be extended to allow for easy browsing of the capt
 
 ## Usage
 Simply send a file with the name `alarm[file]` to `/upload`. Authenticate with basic auth.
+
+### Example
+
+    curl -F "alarm[file]=@image.jpg" -u alarm-user:password http://127.0.0.1:8000/upload
