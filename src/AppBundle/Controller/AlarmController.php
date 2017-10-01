@@ -51,7 +51,9 @@ class AlarmController extends Controller
                         ['alarm' => $alarm]
                     ),
                     'text/plain'
-                );
+                )
+                ->attach(\Swift_Attachment::fromPath($this->getParameter('upload_directory') . '/' . $fileName))
+            ;
 
             $mailer->send($message);
         }
