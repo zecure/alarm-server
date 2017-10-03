@@ -56,6 +56,8 @@ class AlarmController extends Controller
             ;
 
             $mailer->send($message);
+
+            return new Response();
         }
 
         return $this->render('alarm/upload.html.twig', [
