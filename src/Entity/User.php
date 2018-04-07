@@ -7,7 +7,6 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Class User
- * @package AppBundle\Entity
  * @ORM\Entity
  * @ORM\Table(name="users")
  */

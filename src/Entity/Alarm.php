@@ -7,7 +7,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Class Alarm
- * @package AppBundle\Entity
  * @ORM\Entity
  * @ORM\Table(name="alarms")
  */
