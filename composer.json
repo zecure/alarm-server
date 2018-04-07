@@ -1,6 +1,14 @@
 {
+    "name": "zecure/alarm-server",
     "type": "project",
-    "license": "proprietary",
+    "license": "GPL-3.0",
+    "authors": [
+        {
+            "name": "Hendrik Buchwald",
+            "email": "hb@zecure.org",
+            "homepage": "https://zecure.org"
+        }
+    ],
     "require": {
         "php": "^7.1.3",
         "ext-iconv": "*",
