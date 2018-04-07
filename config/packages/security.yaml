@@ -1,0 +1,19 @@
+security:
+    encoders:
+        FOS\UserBundle\Model\UserInterface: bcrypt
+    providers:
+        fos_userbundle:
+            id: fos_user.user_provider.username
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            pattern: ^/
+            http_basic:
+                provider: fos_userbundle
+            logout:    true
+            anonymous: true
+
+    access_control:
+        - { path: ^/upload$, role: ROLE_ALARM }
