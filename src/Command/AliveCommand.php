@@ -46,9 +46,11 @@ class AliveCommand extends ContainerAwareCommand
         $deadUsers = $userRepository->findDead($input->getOption('seconds'), $input->getOption('users'));
         $adminUsers = $userRepository->findAdmins();
 
-        foreach ($adminUsers as $adminUser) {
-            if (!$this->notify($adminUser, $deadUsers)) {
-                $output->writeln('Could not notify ' . $adminUser->getUsername());
+        if ($deadUsers) {
+            foreach ($adminUsers as $adminUser) {
+                if (!$this->notify($adminUser, $deadUsers)) {
+                    $output->writeln('Could not notify ' . $adminUser->getUsername());
+                }
             }
         }
 
