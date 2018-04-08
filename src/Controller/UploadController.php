@@ -40,7 +40,7 @@ class UploadController extends Controller
             $em->persist($alarm);
             $em->flush();
 
-            $message = (new \Swift_Message('Alarm'))
+            $message = (new \Swift_Message($this->getParameter('mail_subject_alarm')))
                 ->setFrom($this->getParameter('mailer_from'))
                 ->setTo($this->getUser()->getEmail())
                 ->setBody(
