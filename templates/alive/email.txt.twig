@@ -1,0 +1,3 @@
+{% for user in users %}
+{{ user.username }} is dead since {{ user.lastPingAt|date('Y-m-d H:i:s') }}.
+{% endfor %}
