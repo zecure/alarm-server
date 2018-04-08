@@ -26,7 +26,16 @@ class UserRepository extends EntityRepository
             ;
         }
 
-        return $queryBuilder->getQuery()->getResult();
+        /** @var User[] $deadUsers */
+        $deadUsers = $queryBuilder->getQuery()->getResult();
+
+        $deadAlarmUsers = [];
+        foreach ($deadUsers as $deadUser) {
+            if ($deadUser->hasRole('ROLE_ALARM')) {
+                $deadAlarmUsers[] = $deadUser;
+            }
+        }
+        return $deadAlarmUsers;
     }
 
     /**
