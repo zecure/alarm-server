@@ -36,6 +36,7 @@ class Alarm
 
     /**
      * @var \DateTime
+     * @ORM\Column(type="datetime")
      */
     protected $createdAt;
 
