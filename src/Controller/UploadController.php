@@ -81,7 +81,7 @@ class UploadController extends Controller
         $mailer = $this->get('mailer');
         $message = (new \Swift_Message($this->getParameter('mail_subject_alarm')))
             ->setFrom($this->getParameter('mailer_from'))
-            ->setTo($adminUser)
+            ->setTo($adminUser->getEmail())
             ->setBody(
                 $this->renderView(
                     'alarm/email.txt.twig',
