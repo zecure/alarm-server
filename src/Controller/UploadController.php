@@ -5,6 +5,8 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
+use Symfony\Component\HttpKernel\Exception\TooManyRequestsHttpException;
 use App\Entity\Alarm;
 use App\Form\AlarmType;
 use App\Entity\User;
@@ -22,10 +24,20 @@ class UploadController extends Controller
 
         $form->handleRequest($request);
 
-        if (!$form->isSubmitted() || !$form->isValid()) {
+        if (!$form->isSubmitted()) {
             return $this->render('alarm/upload.html.twig', [
                 'form' => $form->createView()
             ]);
+        }
+
+        if (!$form->isValid()) {
+            throw new BadRequestHttpException('Invalid form');
+        }
+
+        /** @var \App\Repository\AlarmRepository $alarmRepository */
+        $alarmRepository = $this->getDoctrine()->getRepository(Alarm::class);
+        if ($alarmRepository->hasTooMany($this->getUser(), $this->getParameter('alarm_threshold'))) {
+            throw new TooManyRequestsHttpException();
         }
 
         /** @var \Symfony\Component\HttpFoundation\File\UploadedFile $file */
