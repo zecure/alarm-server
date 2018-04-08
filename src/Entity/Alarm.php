@@ -7,7 +7,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Class Alarm
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\AlarmRepository")
  * @ORM\Table(name="alarms")
  */
 class Alarm
@@ -36,6 +36,7 @@ class Alarm
 
     /**
      * @var \DateTime
+     * @ORM\Column(type="datetime")
      */
     protected $createdAt;
 

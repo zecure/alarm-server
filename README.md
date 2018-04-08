@@ -23,8 +23,20 @@ Later on the application will be extended to allow for easy browsing of the capt
     php -S 127.0.0.1:8000 -t public
 
 ## Usage
-Simply send a file with the name `alarm[file]` to `/upload`. Authenticate with basic auth.
+This section explains how clients can use the functionality that the server provides. Since it is a web server all
+actions can be done with `curl`.
 
-### Example
+### Alarm
+To trigger the alarm simply send a file with the name `alarm[file]` to `/upload`.
+
+#### Example
 
     curl -F "alarm[file]=@image.jpg" -u alarm-user:password http://127.0.0.1:8000/upload
+
+### Ping
+To let the alarm server know that you are still alive send a request to `/ping`. Run `./bin/console as:alive:notify`
+on the server to notify administrators by e-mail about dead clients.
+
+#### Example
+
+    curl -u alarm-user:password http://127.0.0.1:8000/ping

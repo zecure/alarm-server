@@ -4,6 +4,9 @@ parameters:
     locale: 'en'
     upload_directory: '%kernel.project_dir%/var/uploads'
     mailer_from: '%env(resolve:MAILER_FROM)%'
+    alarm_threshold: '-1 second'
+    mail_subject_alarm: 'ALARM TRIGGERED'
+    mail_subject_alive: 'ALARM: DEAD USER'
 
 services:
     # default configuration for services in *this* file
