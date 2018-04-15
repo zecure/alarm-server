@@ -7,27 +7,28 @@ The goal is simple: allow clients to store files remotely (for example images fr
 So in case intruders get access to one of the alarm systems, they can not remove their traces.
 Additionally the application notifies administrators by e-mail that a file was received. It also keeps audit logs.
 
-Later on the application will be extended to allow for easy browsing of the captured images or other files.
+Later on the application will be extended to allow for easy browsing of the captured images.
 
 ## Installation
+You need [Composer](https://getcomposer.org/) to install the application.
 
     composer install
-    php bin/console doctrine:database:create 
-    php bin/console doctrine:schema:update --force 
+    ./bin/console doctrine:database:create 
+    ./bin/console doctrine:schema:update --force 
 
 At least two users are required for the most basic setup. One administrator user that will receive the notifications and one user for each alarm system.
 
-    php bin/console fos:user:create admin-user
-    php bin/console fos:user:promote admin-user ROLE_ADMIN
-    php bin/console fos:user:create alarm-user
-    php bin/console fos:user:promote alarm-user ROLE_ALARM
+    ./bin/console fos:user:create admin-user
+    ./bin/console fos:user:promote admin-user ROLE_ADMIN
+    ./bin/console fos:user:create alarm-user
+    ./bin/console fos:user:promote alarm-user ROLE_ALARM
 
 For **development** you can use the following command to start a web server.
 ```
 php -S 127.0.0.1:8000 -t public
 ```
 
-Do not use the `php` server in **production**, use a real web server instead. The development server is slow and only for tests.
+Do not use the built-in web server in **production**, use a real web server instead. The development server is slow and only for tests.
 
 You can find more information about the web server configuration in the [Symfony documentation](https://symfony.com/doc/4.0/setup/web_server_configuration.html).
 
