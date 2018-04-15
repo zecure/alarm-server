@@ -30,13 +30,36 @@ actions can be done with `curl`.
 To trigger the alarm simply send a file with the name `alarm[file]` to `/upload`.
 
 #### Example
+You can use the following `curl` command to upload a picture.
+```
+curl -F "alarm[file]=@image.jpg" -u alarm-user:password http://127.0.0.1:8000/upload
+```
 
-    curl -F "alarm[file]=@image.jpg" -u alarm-user:password http://127.0.0.1:8000/upload
+Combine this with `motion`, a software motion detector, and the main part of the alarm system is already done.
+Your `motion.conf` should look similar to this.
+```
+daemon on
+process_id_file /home/user/motion.pid
+videodevice /dev/video0
+
+width 800
+height 600
+framerate 5
+minimum_frame_time 1
+lightswitch 10
+threshold 1500
+
+output_pictures on
+target_dir /home/user/alarm
+on_picture_save curl -F "alarm[file]=@%f" -u alarm-user:password https://example.org/upload
+```
 
 ### Ping
 To let the alarm server know that you are still alive send a request to `/ping`. Run `./bin/console as:alive:notify`
 on the server to notify administrators by e-mail about dead clients.
 
 #### Example
-
-    curl -u alarm-user:password http://127.0.0.1:8000/ping
+You can use the following `curl` command to send a ping request.
+```
+curl -u alarm-user:password http://127.0.0.1:8000/ping
+```
