@@ -7,9 +7,11 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\HttpKernel\Exception\TooManyRequestsHttpException;
+use Symfony\Component\HttpKernel\Exception\ServiceUnavailableHttpException;
 use App\Entity\Alarm;
 use App\Form\AlarmType;
 use App\Entity\User;
+use App\Entity\Status;
 
 class UploadController extends Controller
 {
@@ -19,15 +21,20 @@ class UploadController extends Controller
      */
     public function upload(Request $request) : Response
     {
+        /** @var \App\Repository\StatusRepository $statusRepository */
+        $statusRepository = $this->getDoctrine()->getRepository(Status::class);
+        $status = $statusRepository->getOrCreate();
+
+        if (!$status->isEnabled()) {
+            throw new ServiceUnavailableHttpException(60, 'Alarm is disabled');
+        }
+
         $alarm = new Alarm();
         $form = $this->createForm(AlarmType::class, $alarm);
-
         $form->handleRequest($request);
 
         if (!$form->isSubmitted()) {
-            return $this->render('alarm/upload.html.twig', [
-                'form' => $form->createView()
-            ]);
+            throw new BadRequestHttpException('No form');
         }
 
         if (!$form->isValid()) {
