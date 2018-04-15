@@ -3,11 +3,11 @@ Alarm Server
 
 A small web application to receive and store images from alarm systems.
 
-The goal is simple: allow clients to store files but do not allow them to alter files. So in case intruders get access
-to one of the alarm systems, they can not remove their traces.
+The goal is simple: allow clients to store files remotely (for example images from a camera) but do not allow them to alter the files afterwards.
+So in case intruders get access to one of the alarm systems, they can not remove their traces.
 Additionally the application notifies administrators by e-mail that a file was received. It also keeps audit logs.
 
-Later on the application will be extended to allow for easy browsing of the captured images.
+Later on the application will be extended to allow for easy browsing of the captured images or other files.
 
 ## Installation
 
@@ -27,8 +27,9 @@ For **development** you can use the following command to start a web server.
 php -S 127.0.0.1:8000 -t public
 ```
 
-Do not use the `php` server in **production**, use a real web server. The development server is slow and only for tests.
-You can find more information in the [Symfony documentation](https://symfony.com/doc/current/setup/web_server_configuration.html).
+Do not use the `php` server in **production**, use a real web server instead. The development server is slow and only for tests.
+
+You can find more information about the web server configuration in the [Symfony documentation](https://symfony.com/doc/4.0/setup/web_server_configuration.html).
 
 ## Usage
 This section explains how clients can use the functionality that the server provides. Since it is a web server all
