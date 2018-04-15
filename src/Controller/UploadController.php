@@ -11,6 +11,7 @@ use Symfony\Component\HttpKernel\Exception\ServiceUnavailableHttpException;
 use App\Entity\Alarm;
 use App\Form\AlarmType;
 use App\Entity\User;
+use App\Entity\Status;
 
 class UploadController extends Controller
 {
