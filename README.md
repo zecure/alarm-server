@@ -7,9 +7,10 @@ The goal is simple: allow clients to store files remotely (for example images fr
 So in case intruders get access to one of the alarm systems, they can not remove their traces.
 Additionally the application notifies administrators by e-mail that a file was received. It also keeps audit logs.
 
-Later on the application will be extended to allow for easy browsing of the captured images or other files.
+Later on the application will be extended to allow for easy browsing of the captured images.
 
 ## Installation
+You need [Composer](https://getcomposer.org/) to install the application.
 
     composer install
     ./bin/console doctrine:database:create 
