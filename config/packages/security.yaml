@@ -18,3 +18,4 @@ security:
     access_control:
         - { path: ^/upload$, role: ROLE_ALARM }
         - { path: ^/ping$, role: ROLE_ALARM }
+        - { path: ^/status$, role: ROLE_ADMIN }

@@ -73,3 +73,24 @@ You can use the following `curl` command to send a ping request.
 ```
 curl -u alarm-user:password http://127.0.0.1:8000/ping
 ```
+
+Combine this with `cron` and you can disable and enable `motion` based on the status of the alarm system.
+
+```
+#!/bin/bash
+curl -u alarm-user:password http://127.0.0.1:8000/ping
+if [ $? -eq 0 ]; then
+   /etc/init.d/motion start
+else
+   /etc/init.d/motion stop
+fi
+```
+
+### Status
+You can disable the alarm system with `/status`. Send `status[disabled]` to disable the alarm and `status[enabled]` to enable the alarm.
+
+#### Example
+```
+curl -d "status[disabled]" -u admin-user:password -X POST http://127.0.0.1:8000/status
+curl -d "status[enabled]" -u admin-user:password -X POST http://127.0.0.1:8000/status
+```
