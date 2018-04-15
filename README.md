@@ -78,7 +78,7 @@ Combine this with `cron` and you can disable and enable `motion` based on the st
 
 ```
 #!/bin/bash
-curl -u alarm-user:password http://127.0.0.1:8000/ping
+curl --fail -u alarm-user:password http://127.0.0.1:8000/ping
 if [ $? -eq 0 ]; then
    /etc/init.d/motion start
 else
