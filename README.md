@@ -15,12 +15,20 @@ Later on the application will be extended to allow for easy browsing of the capt
     php bin/console doctrine:database:create 
     php bin/console doctrine:schema:update --force 
 
+At least two users are required for the most basic setup. One administrator user that will receive the notifications and one user for each alarm system.
+
+    php bin/console fos:user:create admin-user
+    php bin/console fos:user:promote admin-user ROLE_ADMIN
     php bin/console fos:user:create alarm-user
     php bin/console fos:user:promote alarm-user ROLE_ALARM
 
-## Dev Server
+For **development** you can use the following command to start a web server.
+```
+php -S 127.0.0.1:8000 -t public
+```
 
-    php -S 127.0.0.1:8000 -t public
+Do not use the `php` server in **production**, use a real web server. The development server is slow and only for tests.
+You can find more information in the [Symfony documentation](https://symfony.com/doc/current/setup/web_server_configuration.html).
 
 ## Usage
 This section explains how clients can use the functionality that the server provides. Since it is a web server all
