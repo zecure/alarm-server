@@ -34,9 +34,7 @@ class UploadController extends Controller
         $form->handleRequest($request);
 
         if (!$form->isSubmitted()) {
-            return $this->render('alarm/upload.html.twig', [
-                'form' => $form->createView()
-            ]);
+            throw new BadRequestHttpException('No form');
         }
 
         if (!$form->isValid()) {

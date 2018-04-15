@@ -25,9 +25,7 @@ class StatusController extends Controller
         $form->handleRequest($request);
 
         if (!$form->isSubmitted()) {
-            return $this->render('alarm/status.html.twig', [
-                'form' => $form->createView()
-            ]);
+            throw new BadRequestHttpException('No form');
         }
 
         if (!$form->isValid()) {
