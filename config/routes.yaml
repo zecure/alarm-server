@@ -1,9 +1,0 @@
-upload:
-    path: /upload
-    controller: App\Controller\UploadController::upload
-ping:
-    path: /ping
-    controller: App\Controller\PingController::ping
-status:
-    path: /status
-    controller: App\Controller\StatusController::status

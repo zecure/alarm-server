@@ -20,6 +20,8 @@ At least two users are required for the most basic setup. One administrator user
 
     ./bin/console fos:user:create admin-user
     ./bin/console fos:user:promote admin-user ROLE_ADMIN
+    ./bin/console fos:user:create api-user
+    ./bin/console fos:user:promote api-user ROLE_API
     ./bin/console fos:user:create alarm-user
     ./bin/console fos:user:promote alarm-user ROLE_ALARM
 

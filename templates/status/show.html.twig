@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <span class="status">
+        Status: {% if status.isEnabled() %} <span class="enabled">Enabled</span> {% else %} <span class="disabled">Disabled</span> {% endif %}
+    </span>
+    <table class="alarm-users">
+        <tr>
+            <th>Name</th>
+            <th>Last Ping</th>
+        </tr>
+        {% for user in alarmUsers %}
+            <tr>
+                <td>{{ user.getUsername() }}</td>
+                <td>{{ user.getLastPingAt()|date }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    <hr>
+    {{ form(form) }}
+{% endblock %}

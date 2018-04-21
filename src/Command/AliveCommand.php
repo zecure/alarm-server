@@ -44,7 +44,7 @@ class AliveCommand extends ContainerAwareCommand
         $userRepository = $doctrine->getRepository(User::class);
 
         $deadUsers = $userRepository->findDead($input->getOption('seconds'), $input->getOption('users'));
-        $adminUsers = $userRepository->findAdmins();
+        $adminUsers = $userRepository->findByRole('ROLE_ADMIN');
 
         if ($deadUsers) {
             foreach ($adminUsers as $adminUser) {
