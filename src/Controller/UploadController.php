@@ -49,7 +49,7 @@ class UploadController extends Controller
 
         /** @var \Symfony\Component\HttpFoundation\File\UploadedFile $file */
         $file = $alarm->getFile();
-        $fileName = hash('sha256', random_bytes(16)) . '.' . $file->guessExtension();
+        $fileName = hash('sha256', random_bytes(16)) . '.' . $file->getClientOriginalExtension();
 
         $file->move(
             $this->getParameter('upload_directory'),
