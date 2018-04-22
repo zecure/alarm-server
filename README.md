@@ -87,7 +87,7 @@ fi
 ```
 
 ### Status
-You can disable the alarm system with `/status`. Send `status[disabled]` to disable the alarm and `status[enabled]` to enable the alarm.
+You can disable the alarm system with `/api/status`. Send `status[disabled]` to disable the alarm and `status[enabled]` to enable the alarm.
 
 #### Example
 ```
