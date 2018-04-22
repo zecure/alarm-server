@@ -11,6 +11,7 @@
                 {{ form_row(form.enabled, {'checked': not status.isEnabled()}) }}
             </div>
             <button type="submit" class="btn-secondary btn">{% if status.isEnabled() %}Disable{% else %}Enable{% endif %}</button>
+            <button class="btn-secondary btn" onclick="window.location = window.location.href; return false;">Refresh</button>
         {{ form_end(form) }}
     </div>
     <table class="table alarm-users">
