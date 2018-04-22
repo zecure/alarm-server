@@ -1,0 +1,28 @@
+.container {
+    padding-top: 30px;
+}
+
+.status {
+    font-size: 1.3em;
+}
+
+.status-form {
+    padding-left: 20px;
+    display: inline-block;
+}
+
+.status .enabled {
+    color: green;
+}
+
+.status .disabled, .alarm-users .dead {
+    color: red;
+}
+
+.alarm-users {
+    margin-top: 40px;
+}
+
+.hidden {
+    display: none;
+}

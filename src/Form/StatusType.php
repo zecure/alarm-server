@@ -3,9 +3,7 @@
 namespace App\Form;
 
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class StatusType extends AbstractType
 {
@@ -17,7 +15,6 @@ class StatusType extends AbstractType
     {
         $builder
             ->add('enabled')
-            ->add('update', SubmitType::class, array('label' => 'Update'))
         ;
     }
 }

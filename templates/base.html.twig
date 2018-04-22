@@ -3,11 +3,15 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Alarm Server{% endblock %}</title>
-        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/styles.css">
+        <script src="js/bootstrap.min.js"></script>
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        <main role="main" class="container">
+            {% block body %}{% endblock %}
+        </main>
         {% block javascripts %}{% endblock %}
     </body>
 </html>

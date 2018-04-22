@@ -4,18 +4,29 @@
     <span class="status">
         Status: {% if status.isEnabled() %} <span class="enabled">Enabled</span> {% else %} <span class="disabled">Disabled</span> {% endif %}
     </span>
-    <table class="alarm-users">
-        <tr>
-            <th>Name</th>
-            <th>Last Ping</th>
-        </tr>
-        {% for user in alarmUsers %}
+    <div class="status-form">
+        {{ form_start(form) }}
+            {{ form_errors(form) }}
+            <div class="hidden">
+                {{ form_row(form.enabled, {'checked': not status.isEnabled()}) }}
+            </div>
+            <button type="submit" class="btn-secondary btn">{% if status.isEnabled() %}Disable{% else %}Enable{% endif %}</button>
+        {{ form_end(form) }}
+    </div>
+    <table class="table alarm-users">
+        <thead>
             <tr>
-                <td>{{ user.getUsername() }}</td>
-                <td>{{ user.getLastPingAt()|date }}</td>
+                <th>Name</th>
+                <th>Last Ping</th>
             </tr>
-        {% endfor %}
+        </thead>
+        <tbody>
+            {% for user in alarmUsers %}
+                <tr>
+                    <td>{{ user.getUsername() }}</td>
+                    <td{% if user.getLastPingAt() < date('-1 hour') %} class="dead"{% endif %}>{{ user.getLastPingAt()|date }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
     </table>
-    <hr>
-    {{ form(form) }}
 {% endblock %}
