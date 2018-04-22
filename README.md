@@ -7,8 +7,6 @@ The goal is simple: allow clients to store files remotely (for example images fr
 So in case intruders get access to one of the alarm systems, they can not remove their traces.
 Additionally the application notifies administrators by e-mail that a file was received. It also keeps audit logs.
 
-Later on the application will be extended to allow for easy browsing of the captured images.
-
 ## Installation
 You need [Composer](https://getcomposer.org/) to install the application.
 
@@ -20,6 +18,8 @@ At least two users are required for the most basic setup. One administrator user
 
     ./bin/console fos:user:create admin-user
     ./bin/console fos:user:promote admin-user ROLE_ADMIN
+    ./bin/console fos:user:create api-user
+    ./bin/console fos:user:promote api-user ROLE_API
     ./bin/console fos:user:create alarm-user
     ./bin/console fos:user:promote alarm-user ROLE_ALARM
 
@@ -56,8 +56,8 @@ width 800
 height 600
 framerate 5
 minimum_frame_time 1
-lightswitch 10
-threshold 1500
+lightswitch 50
+threshold 2500
 
 output_pictures on
 target_dir /home/user/alarm
@@ -91,6 +91,6 @@ You can disable the alarm system with `/status`. Send `status[disabled]` to disa
 
 #### Example
 ```
-curl -d "status[disabled]" -u admin-user:password -X POST http://127.0.0.1:8000/status
-curl -d "status[enabled]" -u admin-user:password -X POST http://127.0.0.1:8000/status
+curl -d "status[disabled]" -u api-user:password -X POST http://127.0.0.1:8000/api/status
+curl -d "status[enabled]" -u api-user:password -X POST http://127.0.0.1:8000/api/status
 ```

@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\HttpKernel\Exception\TooManyRequestsHttpException;
 use Symfony\Component\HttpKernel\Exception\ServiceUnavailableHttpException;
+use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Alarm;
 use App\Form\AlarmType;
 use App\Entity\User;
@@ -18,6 +19,7 @@ class UploadController extends Controller
     /**
      * @param Request $request
      * @return Response
+     * @Route("/upload", name="upload")
      */
     public function upload(Request $request) : Response
     {
@@ -49,7 +51,7 @@ class UploadController extends Controller
 
         /** @var \Symfony\Component\HttpFoundation\File\UploadedFile $file */
         $file = $alarm->getFile();
-        $fileName = hash('sha256', random_bytes(16)) . '.' . $file->guessExtension();
+        $fileName = hash('sha256', random_bytes(16)) . '.' . $file->getClientOriginalExtension();
 
         $file->move(
             $this->getParameter('upload_directory'),
@@ -68,7 +70,7 @@ class UploadController extends Controller
         /** @var \App\Repository\UserRepository $userRepository */
         $userRepository = $this->getDoctrine()->getRepository(User::class);
 
-        $adminUsers = $userRepository->findAdmins();
+        $adminUsers = $userRepository->findByRole('ROLE_ADMIN');
 
         foreach ($adminUsers as $adminUser) {
             $this->notify($adminUser, $alarm, $newPath);

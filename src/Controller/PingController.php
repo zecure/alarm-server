@@ -5,6 +5,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\ServiceUnavailableHttpException;
+use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\User;
 use App\Entity\Status;
 
@@ -13,6 +14,7 @@ class PingController extends Controller
     /**
      * @return Response
      * @throws ServiceUnavailableHttpException if alarm system is disabled
+     * @Route("/ping", name="ping")
      */
     public function ping() : Response
     {

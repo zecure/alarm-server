@@ -39,19 +39,20 @@ class UserRepository extends EntityRepository
     }
 
     /**
+     * @param string $role
      * @return User[]
      */
-    public function findAdmins()
+    public function findByRole(string $role)
     {
         /** @var User[] $users */
         $users = $this->findAll();
 
-        $adminUsers = [];
+        $filteredUsers = [];
         foreach ($users as $user) {
-            if ($user->hasRole('ROLE_ADMIN')) {
-                $adminUsers[] = $user;
+            if ($user->hasRole($role)) {
+                $filteredUsers[] = $user;
             }
         }
-        return $adminUsers;
+        return $filteredUsers;
     }
 }

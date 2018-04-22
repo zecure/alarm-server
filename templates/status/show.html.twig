@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <span class="status">
+        Status: {% if status.isEnabled() %} <span class="enabled">Enabled</span> {% else %} <span class="disabled">Disabled</span> {% endif %}
+    </span>
+    <div class="status-form">
+        {{ form_start(form) }}
+            {{ form_errors(form) }}
+            <div class="hidden">
+                {{ form_row(form.enabled, {'checked': not status.isEnabled()}) }}
+            </div>
+            <button type="submit" class="btn-secondary btn">{% if status.isEnabled() %}Disable{% else %}Enable{% endif %}</button>
+        {{ form_end(form) }}
+    </div>
+    <table class="table alarm-users">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Last Ping</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in alarmUsers %}
+                <tr>
+                    <td>{{ user.getUsername() }}</td>
+                    <td{% if user.getLastPingAt() < date('-1 hour') %} class="dead"{% endif %}>{{ user.getLastPingAt()|date }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -19,3 +19,4 @@ security:
         - { path: ^/upload$, role: ROLE_ALARM }
         - { path: ^/ping$, role: ROLE_ALARM }
         - { path: ^/status$, role: ROLE_ADMIN }
+        - { path: ^/api/status$, role: ROLE_API }
