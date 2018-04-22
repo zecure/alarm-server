@@ -29,4 +29,12 @@ class ApiStatusType extends AbstractType
             ->add('disabled')
         ;
     }
+
+    /**
+     * @return string
+     */
+    public function getBlockPrefix()
+    {
+        return 'status';
+    }
 }
