@@ -3,10 +3,21 @@
 namespace App\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\FormBuilderInterface;
 
-class StatusType extends AbstractType
+class ApiStatusType extends AbstractType
 {
+    /**
+     * @param OptionsResolver $resolver
+     */
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults([
+            'csrf_protection' => false
+        ]);
+    }
+
     /**
      * @param FormBuilderInterface $builder
      * @param array $options
@@ -15,6 +26,7 @@ class StatusType extends AbstractType
     {
         $builder
             ->add('enabled')
+            ->add('disabled')
         ;
     }
 }

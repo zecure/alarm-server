@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Class Status
@@ -22,12 +23,14 @@ class Status
     /**
      * @var bool
      * @ORM\Column(type="boolean")
+     * @Assert\Type("boolean")
      */
     protected $enabled = true;
 
     /**
      * @var bool
      * @ORM\Column(type="boolean")
+     * @Assert\Type("boolean")
      */
     protected $disabled = false;
 
