@@ -1,7 +1,7 @@
 Alarm Server
 ============
 
-A small web application to receive and store images from alarm systems.
+A small web application to receive and store images from alarm systems by *Hendrik Buchwald*.
 
 The goal is simple: allow clients to store files remotely (for example images from a camera) but do not allow them to alter the files afterwards.
 So in case intruders get access to one of the alarm systems, they can not remove their traces.
@@ -49,7 +49,7 @@ Combine this with `motion`, a software motion detector, and the main part of the
 Your `motion.conf` should look similar to this.
 ```
 daemon on
-process_id_file /home/user/motion.pid
+process_id_file /var/lib/motion/motion.pid
 videodevice /dev/video0
 
 width 800
@@ -60,7 +60,7 @@ lightswitch 50
 threshold 2500
 
 output_pictures on
-target_dir /home/user/alarm
+target_dir /var/lib/motion/images
 on_picture_save curl -F "alarm[file]=@%f" -u alarm-user:password https://example.org/upload
 ```
 
