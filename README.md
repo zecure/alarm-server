@@ -7,6 +7,8 @@ The goal is simple: allow clients to store files remotely (for example images fr
 So in case intruders get access to one of the alarm systems, they can not remove their traces.
 Additionally the application notifies administrators by e-mail that a file was received. It also keeps audit logs.
 
+Read more about this project in the blog post [https://blog.zecure.org/diy-home-alarm-system/](https://blog.zecure.org/diy-home-alarm-system/).
+
 ## Installation
 You need [Composer](https://getcomposer.org/) to install the application.
 
