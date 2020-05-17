@@ -1,6 +1,8 @@
 Alarm Server
 ============
 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=zecure_alarm-server&metric=alert_status)](https://sonarcloud.io/dashboard?id=zecure_alarm-server)
+
 A small web application to receive and store images from alarm systems by *Hendrik Buchwald*.
 
 The goal is simple: allow clients to store files remotely (for example images from a camera) but do not allow them to alter the files afterwards.
